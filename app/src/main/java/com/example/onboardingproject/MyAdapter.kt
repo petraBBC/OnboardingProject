@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onboardingproject.models.ItemProperties
+import com.example.onboardingproject.models.SportResponse
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class MyAdapter(private val data: List<ItemProperties>) : RecyclerView.Adapter<MyAdapter.ItemViewHolder>() {
+class MyAdapter(private val data: SportResponse) : RecyclerView.Adapter<MyAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
@@ -31,11 +32,11 @@ class MyAdapter(private val data: List<ItemProperties>) : RecyclerView.Adapter<M
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data.data.items[position])
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return data.data.items.size
     }
 
 }

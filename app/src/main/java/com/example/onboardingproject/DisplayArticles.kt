@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onboardingproject.models.ItemProperties
+import com.example.onboardingproject.models.SportResponse
 import com.example.onboardingproject.network.Api
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,10 +26,10 @@ class DisplayArticles : AppCompatActivity() {
         }
 
         fun getAllData(){
-            Api.retrofitService.getAllData().enqueue(object: Callback<List<ItemProperties>>{
+            Api.retrofitService.getAllData().enqueue(object: Callback <SportResponse>{
                 override fun onResponse(
-                    call: Call<List<ItemProperties>>,
-                    response: Response<List<ItemProperties>>
+                    call: Call<SportResponse>,
+                    response: Response<SportResponse>
                 ) {
                     if (response.isSuccessful) {
                         findViewById<RecyclerView?>(R.id.recycler_view).apply {
@@ -38,7 +39,7 @@ class DisplayArticles : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<List<ItemProperties>>, t: Throwable) {
+                override fun onFailure(call: Call<SportResponse>, t: Throwable) {
                     t.printStackTrace()
                 }
             })
